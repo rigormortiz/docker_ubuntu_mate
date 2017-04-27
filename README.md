@@ -15,8 +15,9 @@ docker run -d -P rigormortiz/ubuntu_mate:zesty
 ### Persistent home directory
 
 ```
-docker volume create ubuntu_desktop
-docker run -d -P -v ubuntu_desktop:/home/ubuntu rigormortiz/ubuntu_mate:zesty
+docker volume create ubuntu_desktop_home
+docker run --rm -v ubuntu_desktop_home:/desktop_tmp rigormortiz/ubuntu_mate:latest cp -pr /home/ubuntu /desktop_tmp
+docker run -d -P -v ubuntu_desktop_home:/home/ubuntu rigormortiz/ubuntu_mate:zesty
 ```
 ### Static port
 
